@@ -1,36 +1,48 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <h2>Usuarios</h2>
-        <hr/>
-        <h:dataTable value="#{verUsuariosControlador.usuarios}" var="usuario">
-            <h:column>
-                <f:facet name="header">ID</f:facet>
-                #{usuario.id}
-            </h:column>
-            <h:column>
-                <f:facet name="header">NOMBRE USUARIO</f:facet>
-                #{usuario.nombreUsuario}
-            </h:column>
-            <h:column>
-                <f:facet name="header">ACTIVO</f:facet>
-                #{usuario.activo ? "SI" : "NO"}
-            </h:column>
-            <h:column>
-                <f:facet name="header">NOMBRES</f:facet>
-                #{usuario.datosBasicos.nombres}
-            </h:column>
-            <h:column>
-                <f:facet name="header">APELLIDOS</f:facet>
-                #{usuario.datosBasicos.apellidos}
-            </h:column>
-        </h:dataTable>
-    </h:body>
-</html>
+<ui:composition 
+    template="/WEB-INF/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="title">Usuario del sistema</ui:define>
+    <ui:define name="contenido">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title">Usuarios</h3>
+                    <div class="table-responsive">
+
+                        <h:dataTable value="#{verUsuariosControlador.usuarios}" var="usuario"
+                                     class="table text-nowrap">
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                    #{usuario.id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">NOMBRE USUARIO</f:facet>
+                                    #{usuario.nombreUsuario}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">ACTIVO</f:facet>
+                                    #{usuario.activo ? "SI" : "NO"}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">NOMBRES</f:facet>
+                                    #{usuario.datosBasicos.nombres}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">APELLIDOS</f:facet>
+                                    #{usuario.datosBasicos.apellidos}
+                            </h:column>
+                        </h:dataTable>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
 

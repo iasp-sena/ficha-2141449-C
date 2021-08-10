@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <ui:include src="/WEB-INF/templates/head.xhtml"/>
+    </h:head>
+    <h:body>
+
+        <ui:include src="/WEB-INF/templates/preloader.xhtml"/>
+        <!-- ============================================================== -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+             data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+
+            <ui:include src="/WEB-INF/templates/topbar.xhtml"/>
+            <ui:include src="/WEB-INF/templates/menu.xhtml"/>
+
+            <!-- ============================================================== -->
+            <!-- Page wrapper  -->
+            <!-- ============================================================== -->
+            <div class="page-wrapper" style="min-height: 250px;">
+
+                <ui:include src="/WEB-INF/templates/bread_crumb.xhtml"/>
+
+                <!-- ============================================================== -->
+                <!-- Container fluid  -->
+                <!-- ============================================================== -->
+                <div class="container-fluid">
+
+                    <ui:include src="/WEB-INF/templates/title_page.xhtml"/>
+
+                    <ui:insert name="contenido">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>Este es el contenido de la página por defecto</p>
+                            </div>
+                        </div>
+                    </ui:insert>
+
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Container fluid  -->
+                <!-- ============================================================== -->
+
+                <ui:include src="/WEB-INF/templates/footer.xhtml"/>
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Page wrapper  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Wrapper -->
+        <!-- ============================================================== -->
+
+        <ui:include src="/WEB-INF/templates/scripts.xhtml"/>
+    </h:body>
+</html>
+
