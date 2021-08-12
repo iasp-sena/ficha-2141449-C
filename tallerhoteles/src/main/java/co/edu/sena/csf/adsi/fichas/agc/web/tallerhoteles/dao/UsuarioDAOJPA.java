@@ -6,31 +6,17 @@
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao;
 
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Usuario;
-import java.util.List;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
 /**
  *
  * @author Ismael
  */
 @Stateless
-public class UsuarioDAOJPA implements UsuarioDAO {
+public class UsuarioDAOJPA extends GenericDAOJPA<Usuario, Integer> implements UsuarioDAO {
     
-    @PersistenceContext(unitName = "tallerHotelPU")
-    private EntityManager em;
-
-    @Override
-    public List<Usuario> buscarTodos() {
-        TypedQuery<Usuario> query = em.createNamedQuery("Usuario.findAll", Usuario.class);
-        return query.getResultList();
-    }
-
-    @Override
-    public Usuario buscarUsuarioPorId(Integer idUsuario) {
-        return em.find(Usuario.class, idUsuario);
+    public UsuarioDAOJPA() {
+        super(Usuario.class);
     }
     
 }

@@ -5,14 +5,22 @@
  */
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao;
 
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Usuario;
-import javax.ejb.Local;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  *
  * @author Ismael
  */
-@Local
-public interface UsuarioDAO extends DAO<Usuario, Integer>{
+public interface DAO<T, K> extends Serializable {
     
+    List<T> buscarTodos();
+    
+    T buscarPorId(K id);
+    
+    void registrar(T obj);
+    
+    void actualizar(T obj);
+    
+    void eliminar(T obj);
 }

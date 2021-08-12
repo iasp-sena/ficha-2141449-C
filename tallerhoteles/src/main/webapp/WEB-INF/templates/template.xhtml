@@ -32,13 +32,21 @@
 
                     <ui:include src="/WEB-INF/templates/title_page.xhtml"/>
 
+                    
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title">
+                        <ui:insert name="title-page">
+                            Taller hotel
+                        </ui:insert>
+                    </h3>
                     <ui:insert name="contenido">
-                        <div class="row">
-                            <div class="col-12">
                                 <p>Este es el contenido de la página por defecto</p>
-                            </div>
-                        </div>
                     </ui:insert>
+                </div>
+            </div>
+        </div>
 
                 </div>
                 <!-- ============================================================== -->

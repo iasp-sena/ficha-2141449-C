@@ -8,41 +8,31 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:define name="title">Usuario del sistema</ui:define>
+    <ui:define name="title-page">Usuarios</ui:define>
     <ui:define name="contenido">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="white-box">
-                    <h3 class="box-title">Usuarios</h3>
-                    <div class="table-responsive">
-
-                        <h:dataTable value="#{verUsuariosControlador.usuarios}" var="usuario"
-                                     class="table text-nowrap">
-                            <h:column>
-                                <f:facet name="header">ID</f:facet>
-                                    #{usuario.id}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">NOMBRE USUARIO</f:facet>
-                                    #{usuario.nombreUsuario}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">ACTIVO</f:facet>
-                                    #{usuario.activo ? "SI" : "NO"}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">NOMBRES</f:facet>
-                                    #{usuario.datosBasicos.nombres}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">APELLIDOS</f:facet>
-                                    #{usuario.datosBasicos.apellidos}
-                            </h:column>
-                        </h:dataTable>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h:dataTable value="#{verUsuariosControlador.usuarios}" var="usuario"
+                     class="table text-nowrap">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                    #{usuario.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">NOMBRE USUARIO</f:facet>
+                    #{usuario.nombreUsuario}
+            </h:column>
+            <h:column>
+                <f:facet name="header">ACTIVO</f:facet>
+                    #{usuario.activo ? "SI" : "NO"}
+            </h:column>
+            <h:column>
+                <f:facet name="header">NOMBRES</f:facet>
+                    #{usuario.datosBasicos.nombres}
+            </h:column>
+            <h:column>
+                <f:facet name="header">APELLIDOS</f:facet>
+                    #{usuario.datosBasicos.apellidos}
+            </h:column>
+        </h:dataTable>
     </ui:define>
 </ui:composition>
 

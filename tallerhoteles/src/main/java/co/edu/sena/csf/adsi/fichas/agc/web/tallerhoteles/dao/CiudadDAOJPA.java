@@ -5,14 +5,18 @@
  */
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao;
 
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Usuario;
-import javax.ejb.Local;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Ciudad;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author Ismael
  */
-@Local
-public interface UsuarioDAO extends DAO<Usuario, Integer>{
+@Stateless
+public class CiudadDAOJPA extends GenericDAOJPA<Ciudad, Integer> implements CiudadDAO {
+    
+    public CiudadDAOJPA() {
+        super(Ciudad.class);
+    }
     
 }
