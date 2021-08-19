@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    template="/WEB-INF/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:attr="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">Usuario del sistema</ui:define>
+    <ui:define name="title-page">Registro usuario</ui:define>
+    <ui:define name="contenido">
+        <h:messages showSummary="true" showDetail="true"/>
+        <h:form id="formRegistrarHotel">
+            
+            <div class="form-group mb-4">
+                <label class="col-md-12 p-0">Ciudad</label>
+                <div class="col-md-12 border-bottom p-0">
+                    <h:selectOneMenu id="ciudad"
+                                     value="#{buscarCiudadController.ciudadSeleccionada}"
+                                     class="form-control p-0 border-0">
+                        <f:selectItem itemLabel="Seleccione una ciudad...."/>
+                        <f:selectItems value="#{buscarCiudadController.ciudades}"
+                                       var="ciudad"
+                                       itemValue="#{ciudad}"
+                                       itemLabel="#{ciudad.codigo} - #{ciudad.nombre}"/>
+                        <f:ajax listener="#{buscarBarrioController.buscarPorCiudadSeleccionada()}"
+                                execute="@this"
+                                render="barrio"/>
+                    </h:selectOneMenu>
+                </div>
+            </div>
+            <div class="form-group mb-4">
+                <label class="col-md-12 p-0">Barrio</label>
+                <div class="col-md-12 border-bottom p-0">
+                    <h:selectOneMenu id="barrio"
+                                     value="#{registroHotelController.nuevoHotel.barrio}"
+                                     class="form-control p-0 border-0">
+                        <f:selectItem itemLabel="Seleccione un barrio...."/>
+                        <f:selectItems value="#{buscarBarrioController.barriosCiudadSeleccionada}"
+                                       var="barrio"
+                                       itemValue="#{barrio}"
+                                       itemLabel="#{barrio.codigo} - #{barrio.nombre}"/>
+                    </h:selectOneMenu>
+                </div>
+            </div>
+            
+            <div class="form-group mb-4">
+                <label class="col-md-12 p-0">Nombre hotel</label>
+                <div class="col-md-12 border-bottom p-0">
+                    <h:inputText id="nombreHotel"
+                                 value="#{registroHotelController.nuevoHotel.nombre}"
+                                 attr:placeholder="Ingrese el nombre del hotel"
+                                 class="form-control p-0 border-0"/>
+                </div>
+            </div>
+            <div class="form-group mb-4">
+                <label class="col-md-12 p-0">Dirección</label>
+                <div class="col-md-12 border-bottom p-0">
+                    <h:inputText id="direccionHotel"
+                                 value="#{registroHotelController.nuevoHotel.direccion}"
+                                 attr:placeholder="Ingrese la dirección del hotel"
+                                 class="form-control p-0 border-0"/>
+                </div>
+            </div>
+            <div class="form-group mb-4">
+                <label class="col-md-12 p-0">Teléfono</label>
+                <div class="col-md-12 border-bottom p-0">
+                    <h:inputText id="telefonoHotel"
+                                 value="#{registroHotelController.nuevoHotel.telefonos}"
+                                 attr:placeholder="Ingrese el teléfono del hotel"
+                                 class="form-control p-0 border-0"/>
+                </div>
+            </div>
+            <div class="form-group mb-4">
+                <div class="col-sm-12">
+                    <h:commandButton id="btnRegistrar" class="btn btn-success" value="Registrar"
+                                     actionListener="#{registroHotelController.registrarHotel()}"/>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
+

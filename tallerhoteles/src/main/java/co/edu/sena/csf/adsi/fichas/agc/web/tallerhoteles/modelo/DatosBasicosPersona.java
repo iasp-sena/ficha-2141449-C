@@ -114,6 +114,10 @@ public class DatosBasicosPersona implements Serializable {
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
+    
+    public String getNombreCompleto(){
+        return String.format("%s %s", this.nombres, this.apellidos);
+    }
 
     public Huesped getHuesped() {
         return huesped;

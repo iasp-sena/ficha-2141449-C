@@ -6,6 +6,7 @@
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.controladores.hoteles;
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao.HotelDAO;
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Hotel;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.util.MensajeUtil;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -43,13 +44,7 @@ public class RegistroHotelController implements Serializable{
         
         hotelDAO.registrar(nuevoHotel);
         
-        
-        FacesMessage message = new FacesMessage(
-                FacesMessage.SEVERITY_INFO, 
-                "Registro", 
-                "Se ha registrado correctamente el hotel");
-        FacesContext.getCurrentInstance()
-                .addMessage(null, message);
+        MensajeUtil.mostrarInformativo("Registro", "Se ha registrado correctamente el hotel");
     }
     
     public Hotel getNuevoHotel() {

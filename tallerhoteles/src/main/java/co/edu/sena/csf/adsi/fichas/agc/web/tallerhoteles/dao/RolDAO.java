@@ -5,7 +5,7 @@
  */
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao;
 
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Usuario;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Rol;
 import javax.ejb.Local;
 
 /**
@@ -13,8 +13,6 @@ import javax.ejb.Local;
  * @author Ismael
  */
 @Local
-public interface UsuarioDAO extends DAO<Usuario, Integer>{
-    
-    Usuario consultarPorUsuarioClave(String usuario, String clave);
+public interface RolDAO extends DAO<Rol, Integer>{
     
 }

@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:fragment xmlns="http://www.w3.org/1999/xhtml"
              xmlns:h="http://xmlns.jcp.org/jsf/html"
-             xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:f="http://xmlns.jcp.org/jsf/core"
+             xmlns:attr="http://xmlns.jcp.org/jsf/passthrough">
 
     <!-- ============================================================== -->
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
@@ -12,64 +14,49 @@
         <div class="scroll-sidebar">
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
-                <ul id="sidebarnav">
-                    <!-- User Profile-->
-                    <li class="sidebar-item pt-2">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
-                           aria-expanded="false">
-                            <i class="far fa-clock" aria-hidden="true"></i>
-                            <span class="hide-menu">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.html"
-                           aria-expanded="false">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                            <span class="hide-menu">Profile</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
-                           aria-expanded="false">
-                            <i class="fa fa-table" aria-hidden="true"></i>
-                            <span class="hide-menu">Basic Table</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.html"
-                           aria-expanded="false">
-                            <i class="fa fa-font" aria-hidden="true"></i>
-                            <span class="hide-menu">Icon</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="map-google.html"
-                           aria-expanded="false">
-                            <i class="fa fa-globe" aria-hidden="true"></i>
-                            <span class="hide-menu">Google Map</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.html"
-                           aria-expanded="false">
-                            <i class="fa fa-columns" aria-hidden="true"></i>
-                            <span class="hide-menu">Blank Page</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.html"
-                           aria-expanded="false">
-                            <i class="fa fa-info-circle" aria-hidden="true"></i>
-                            <span class="hide-menu">Error 404</span>
-                        </a>
-                    </li>
-                    <li class="text-center p-20 upgrade-btn">
-                        <a href="https://www.wrappixel.com/templates/ampleadmin/"
-                           class="btn d-grid btn-danger text-white" target="_blank">
-                            Upgrade to Pro</a>
-                    </li>
-                </ul>
+                <h:form id="formRolUsuario">
+                    <h:selectOneMenu value="#{sesionControlador.rolSeleccionado}"
+                                     class="form-control">
+                        <f:selectItems value="#{sesionControlador.rolesActivosDelUsuario}" var="rol" 
+                                       itemValue="#{rol}" itemLabel="#{rol.nombre}"/>
+                        <f:ajax execute="@this" render="menu"/>
+                    </h:selectOneMenu>
+                    <h:panelGroup id="menu" layout="block">
+                        <ul id="sidebarnav">
+                            <li class="sidebar-item pt-2">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                                   aria-expanded="false">
+                                    <i class="far fa-clock" aria-hidden="true"></i>
+                                    <span class="hide-menu">Inicio</span>
+                                </a>
+                            </li>
+                            <ui:repeat value="#{sesionControlador.getPermisosPrincipalesRolSeleccionado()}" var="permiso">
+                                <li class="sidebar-item pt-2">
+                                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                                       aria-expanded="false">
+                                        <i class="#{permiso.icono}" aria-hidden="true"></i>
+                                        <span class="hide-menu">#{permiso.nombre}</span>
+                                    </a>
+                                    <ul class="sidebarnav">
+                                        <ui:repeat value="#{sesionControlador.getSubpermisosDePermisoSuperior(permiso)}" var="subpermiso">
+                                            <li class="sidebar-item pt-2">
+                                                <h:link class="sidebar-link waves-effect waves-dark sidebar-link" outcome="#{subpermiso.url}"
+                                                   attr:aria-expanded="false">
+                                                    <i class="fas fa-angle-double-right" aria-hidden="true"></i>
+                                                    <span class="hide-menu">#{subpermiso.nombre}</span>
+                                                </h:link>
+                                            </li>
+                                        </ui:repeat>
+                                    </ul>
+                                </li>
+                            </ui:repeat>
 
+
+
+
+                        </ul>
+                    </h:panelGroup>
+                </h:form>
             </nav>
             <!-- End Sidebar navigation -->
         </div>

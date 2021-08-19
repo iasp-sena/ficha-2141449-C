@@ -7,6 +7,9 @@ package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao;
 
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Usuario;
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -17,6 +20,19 @@ public class UsuarioDAOJPA extends GenericDAOJPA<Usuario, Integer> implements Us
     
     public UsuarioDAOJPA() {
         super(Usuario.class);
+    }
+
+    @Override
+    public Usuario consultarPorUsuarioClave(String usuario, String clave) {
+        try {
+            em.getEntityManagerFactory().getCache().evictAll();
+            TypedQuery<Usuario> query = em.createNamedQuery("Usuario.findByUsuarioYClave", classType);
+            query.setParameter("nombreUsuario", usuario);
+            query.setParameter("clave", clave);
+            return query.getSingleResult();
+        } catch (NoResultException | NonUniqueResultException ex){
+            return null;
+        }
     }
     
 }
