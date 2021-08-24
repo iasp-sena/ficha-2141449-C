@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Huesped.findAll", query = "SELECT h FROM Huesped h"),
     @NamedQuery(name = "Huesped.findByIdHuesped", query = "SELECT h FROM Huesped h WHERE h.id = :idHuesped"),
-    @NamedQuery(name = "Huesped.findByTelefono", query = "SELECT h FROM Huesped h WHERE h.telefono = :telefono")})
+    @NamedQuery(name = "Huesped.findByTelefono", query = "SELECT h FROM Huesped h WHERE h.telefono = :telefono"),
+    @NamedQuery(name = "Huesped.findByTipoYNumeroDocumento", query = "SELECT h FROM Huesped h WHERE h.datosBasicos.tipoDocumento.id = :idTipoDocumento AND h.datosBasicos.numeroDocumento = :numeroDocumento")})
 public class Huesped implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,6 +53,12 @@ public class Huesped implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "direccion")
     private String direccion;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Size(min = 1, max = 65535)
+    @Column(name = "email")
+    private String email;
     @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Ciudad ciudad;
@@ -110,6 +117,15 @@ public class Huesped implements Serializable {
     public void setDatosBasicos(DatosBasicosPersona datosBasicos) {
         this.datosBasicos = datosBasicos;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
 
     @Override
     public int hashCode() {
