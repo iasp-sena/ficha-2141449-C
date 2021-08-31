@@ -59,13 +59,13 @@
                             <div class="dropdown">
 
                                 <a class="profile-pic dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="#{request.contextPath}/resources/plugins/images/users/varun.jpg" alt="user-img" width="36"
+                                    <img src="#{sesionControlador.fotoPerfil}" alt="user-img" width="36"
                                          class="img-circle"/>
                                     <span class="text-white font-medium">#{sesionControlador.usuario.datosBasicos.nombreCompleto}</span>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <li>
-                                        <a class="dropdown-item" href="#">Ver perfil</a>
+                                        <h:link outcome="/app/usuarios/ver_perfil" class="dropdown-item" value="Ver perfil" />
                                     </li>
                                     <li>
                                         <hr/>

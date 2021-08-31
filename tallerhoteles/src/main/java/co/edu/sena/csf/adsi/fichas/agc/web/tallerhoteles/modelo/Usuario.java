@@ -62,10 +62,13 @@ public class Usuario implements Serializable {
     @NotNull
     @Column(name = "activo")
     private boolean activo;
+    @Size(min = 0, max = 200)
+    @Column(name = "img_perfil")
+    private String fotoPerfil;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<RolUsuario> rolesUsuario;
     @JoinColumn(name = "id_dato_basico_persona", referencedColumnName = "id_dato_basico_persona")
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
     private DatosBasicosPersona datosBasicos;
 
     public Usuario() {
@@ -129,6 +132,14 @@ public class Usuario implements Serializable {
 
     public void setDatosBasicos(DatosBasicosPersona datosBasicos) {
         this.datosBasicos = datosBasicos;
+    }
+
+    public String getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(String fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
     }
 
     @Override

@@ -26,6 +26,10 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class SesionControlador implements Serializable {
+    
+    private static final String FOLDER_PATH = "/resources/img";
+    private static final String IMG_PERFIL_DEFAULT = "/perfil/default.jpg";
+    
 
     private Usuario usuario;
     private List<Rol> rolesActivosDelUsuario;
@@ -78,6 +82,13 @@ public class SesionControlador implements Serializable {
     private boolean usuarioTieneRolesActivos() {
         return Objects.nonNull(rolesActivosDelUsuario)
                 && !rolesActivosDelUsuario.isEmpty();
+    }
+    
+    public String getFotoPerfil(){
+        //String folderApp = FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
+        String contextApp = FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
+        String imagen = Objects.isNull(usuario.getFotoPerfil()) ? IMG_PERFIL_DEFAULT : usuario.getFotoPerfil();
+        return contextApp + FOLDER_PATH + imagen;
     }
 
     //<editor-fold defaultstate="collapsed" desc="Getters && Setters">

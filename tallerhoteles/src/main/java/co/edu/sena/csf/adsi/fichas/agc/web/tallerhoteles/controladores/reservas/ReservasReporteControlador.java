@@ -45,7 +45,7 @@ public class ReservasReporteControlador implements Serializable {
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
         HttpServletResponse response = (HttpServletResponse) ec.getResponse();
-        response.setHeader("Content-diposition", "attachment; filename=reporteReservas.pdf");
+        response.setHeader("Content-disposition", "attachment; filename=reporteReservas.pdf");
         
         List<Reserva> reservas = reservaDAO.buscarTodos();
         File reporteFile = new File(ec.getRealPath("/WEB-INF/classes/reportes/report_reservas.jasper"));
