@@ -6,8 +6,8 @@
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.controladores.commons;
 
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao.BarrioDAO;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Barrio;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Ciudad;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Barrio;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Ciudad;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;

@@ -10,6 +10,12 @@
     <ui:define name="title">Usuario del sistema</ui:define>
     <ui:define name="title-page">Usuarios</ui:define>
     <ui:define name="contenido">
+        <h:form id="formAcciones" enctype="multipart/form-data">
+            <h:inputFile class="form-control" value="#{cargaMasivaUsuariosController.file}" />
+            <h:commandLink class="btn btn-success" actionListener="#{cargaMasivaUsuariosController.cargarUsuarios()}">
+                <i  class="fa fa-arrow-up"></i> Cargar usuarios
+            </h:commandLink>
+        </h:form>
         <h:dataTable value="#{verUsuariosControlador.usuarios}" var="usuario"
                      class="table text-nowrap">
             <h:column>

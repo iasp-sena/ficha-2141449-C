@@ -6,7 +6,7 @@
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.controladores.sesion;
 
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao.UsuarioDAO;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Usuario;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Usuario;
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.util.MensajeUtil;
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.util.RedireccionUtil;
 import java.io.IOException;

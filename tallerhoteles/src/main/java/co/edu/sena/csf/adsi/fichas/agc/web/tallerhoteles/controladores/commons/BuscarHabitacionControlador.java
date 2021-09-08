@@ -6,8 +6,8 @@
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.controladores.commons;
 
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao.HabitacionDAO;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Habitacion;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Hotel;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Habitacion;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Hotel;
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.util.MensajeUtil;
 import java.io.Serializable;
 import java.util.Collection;

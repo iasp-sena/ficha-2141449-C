@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo;
+package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -53,12 +53,6 @@ public class Huesped implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "direccion")
     private String direccion;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Size(min = 1, max = 65535)
-    @Column(name = "email")
-    private String email;
     @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Ciudad ciudad;
@@ -117,15 +111,6 @@ public class Huesped implements Serializable {
     public void setDatosBasicos(DatosBasicosPersona datosBasicos) {
         this.datosBasicos = datosBasicos;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
 
     @Override
     public int hashCode() {

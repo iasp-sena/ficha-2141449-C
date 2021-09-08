@@ -5,7 +5,7 @@
  */
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao;
 
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.TipoDocumento;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.TipoDocumento;
 import javax.ejb.Local;
 
 /**

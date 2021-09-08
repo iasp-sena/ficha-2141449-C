@@ -6,7 +6,7 @@
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.controladores.commons;
 
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao.CiudadDAO;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Ciudad;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Ciudad;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;

@@ -5,8 +5,11 @@
  */
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao;
 
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Reserva;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Reserva;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.view.ReservaPorMes;
+import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -17,6 +20,12 @@ public class ReservaDAOJPA extends GenericDAOJPA<Reserva, Integer> implements Re
     
     public ReservaDAOJPA() {
         super(Reserva.class);
+    }
+
+    @Override
+    public List<ReservaPorMes> buscarDatosReservaPorMes() {
+        TypedQuery<ReservaPorMes> query = em.createQuery("SELECT rpm FROM ReservaPorMes rpm", ReservaPorMes.class);
+        return query.getResultList();
     }
     
 }

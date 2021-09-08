@@ -3,18 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo;
+package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -27,42 +24,39 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Ismael
  */
 @Entity
-@Table(name = "barrios")
+@Table(name = "caracteristicas_habitaciones")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Barrio.findAll", query = "SELECT b FROM Barrio b"),
-    @NamedQuery(name = "Barrio.findByIdBarrio", query = "SELECT b FROM Barrio b WHERE b.id = :idBarrio"),
-    @NamedQuery(name = "Barrio.findByNombre", query = "SELECT b FROM Barrio b WHERE b.nombre = :nombre"),
-    @NamedQuery(name = "Barrio.findByCodigo", query = "SELECT b FROM Barrio b WHERE b.codigo = :codigo")})
-public class Barrio implements Serializable {
+    @NamedQuery(name = "CaracteristicaHabitacion.findAll", query = "SELECT c FROM CaracteristicaHabitacion c"),
+    @NamedQuery(name = "CaracteristicaHabitacion.findByIdCaracteristicaHabitacion", query = "SELECT c FROM CaracteristicaHabitacion c WHERE c.id = :idCaracteristicaHabitacion"),
+    @NamedQuery(name = "CaracteristicaHabitacion.findByNombre", query = "SELECT c FROM CaracteristicaHabitacion c WHERE c.nombre = :nombre"),
+    @NamedQuery(name = "CaracteristicaHabitacion.findByDescripcion", query = "SELECT c FROM CaracteristicaHabitacion c WHERE c.descripcion = :descripcion")})
+public class CaracteristicaHabitacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_barrio")
+    @Column(name = "id_caracteristica_habitacion")
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 200)
+    @Size(min = 1, max = 45)
     @Column(name = "nombre")
     private String nombre;
-    @Size(max = 15)
-    @Column(name = "codigo")
-    private String codigo;
-    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Ciudad ciudad;
+    @Size(max = 45)
+    @Column(name = "descripcion")
+    private String descripcion;
 
-    public Barrio() {
+    public CaracteristicaHabitacion() {
     }
 
-    public Barrio(Integer idBarrio) {
-        this.id = idBarrio;
+    public CaracteristicaHabitacion(Integer idCaracteristicaHabitacion) {
+        this.id = idCaracteristicaHabitacion;
     }
 
-    public Barrio(Integer idBarrio, String nombre) {
-        this.id = idBarrio;
+    public CaracteristicaHabitacion(Integer idCaracteristicaHabitacion, String nombre) {
+        this.id = idCaracteristicaHabitacion;
         this.nombre = nombre;
     }
 
@@ -82,20 +76,12 @@ public class Barrio implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public Ciudad getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(Ciudad ciudad) {
-        this.ciudad = ciudad;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Override
@@ -108,10 +94,10 @@ public class Barrio implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Barrio)) {
+        if (!(object instanceof CaracteristicaHabitacion)) {
             return false;
         }
-        Barrio other = (Barrio) object;
+        CaracteristicaHabitacion other = (CaracteristicaHabitacion) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -120,7 +106,7 @@ public class Barrio implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Barrio[ idBarrio=" + id + " ]";
+        return "co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.CaracteristicaHabitacion[ idCaracteristicaHabitacion=" + id + " ]";
     }
     
 }

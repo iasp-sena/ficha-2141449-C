@@ -5,7 +5,9 @@
  */
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao;
 
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Reserva;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Reserva;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.view.ReservaPorMes;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -15,4 +17,5 @@ import javax.ejb.Local;
 @Local
 public interface ReservaDAO extends DAO<Reserva, Integer>{
     
+    List<ReservaPorMes> buscarDatosReservaPorMes();
 }

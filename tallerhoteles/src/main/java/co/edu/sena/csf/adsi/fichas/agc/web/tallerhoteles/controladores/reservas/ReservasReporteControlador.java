@@ -6,7 +6,7 @@
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.controladores.reservas;
 
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao.ReservaDAO;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Reserva;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Reserva;
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.util.MensajeUtil;
 import java.io.File;
 import java.io.IOException;

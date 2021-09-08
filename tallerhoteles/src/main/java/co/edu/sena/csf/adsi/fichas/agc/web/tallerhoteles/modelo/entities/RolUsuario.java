@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo;
+package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -20,11 +20,15 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 
 /**
  *
  * @author Ismael
  */
+@Builder
+@AllArgsConstructor
 @Entity
 @Table(name = "roles_usuarios")
 @XmlRootElement

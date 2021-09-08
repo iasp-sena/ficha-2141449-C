@@ -5,7 +5,7 @@
  */
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao;
 
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Habitacion;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Habitacion;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;

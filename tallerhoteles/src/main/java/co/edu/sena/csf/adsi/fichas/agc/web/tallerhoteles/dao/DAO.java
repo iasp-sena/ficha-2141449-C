@@ -20,6 +20,8 @@ public interface DAO<T, K> extends Serializable {
     
     void registrar(T obj);
     
+    void registrar(List<T> obj);
+    
     void actualizar(T obj);
     
     void eliminar(T obj);

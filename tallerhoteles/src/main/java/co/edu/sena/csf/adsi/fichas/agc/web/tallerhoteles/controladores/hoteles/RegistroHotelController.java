@@ -5,7 +5,7 @@
  */
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.controladores.hoteles;
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao.HotelDAO;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Hotel;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Hotel;
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.util.MensajeUtil;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;

@@ -6,6 +6,7 @@
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao;
 
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -38,6 +39,13 @@ public abstract class GenericDAOJPA<T, K> {
 
     public void registrar(T obj) {
         em.persist(obj);
+    }
+
+    public void registrar(List<T> objs) {
+        if(Objects.isNull(objs)){
+            throw new IllegalArgumentException("La lista de objetos a persistir no puede ser nula (" + classType.getName() + ")");
+        }
+        objs.forEach(this::registrar);
     }
 
     public void actualizar(T obj) {

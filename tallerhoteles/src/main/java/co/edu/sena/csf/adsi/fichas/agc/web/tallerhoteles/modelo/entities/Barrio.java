@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo;
+package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -25,39 +27,42 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Ismael
  */
 @Entity
-@Table(name = "estados_reserva")
+@Table(name = "barrios")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "EstadoReserva.findAll", query = "SELECT e FROM EstadoReserva e"),
-    @NamedQuery(name = "EstadoReserva.findByIdEstadoReserva", query = "SELECT e FROM EstadoReserva e WHERE e.id = :idEstadoReserva"),
-    @NamedQuery(name = "EstadoReserva.findByNombre", query = "SELECT e FROM EstadoReserva e WHERE e.nombre = :nombre")})
-public class EstadoReserva implements Serializable {
+    @NamedQuery(name = "Barrio.findAll", query = "SELECT b FROM Barrio b"),
+    @NamedQuery(name = "Barrio.findByIdBarrio", query = "SELECT b FROM Barrio b WHERE b.id = :idBarrio"),
+    @NamedQuery(name = "Barrio.findByNombre", query = "SELECT b FROM Barrio b WHERE b.nombre = :nombre"),
+    @NamedQuery(name = "Barrio.findByCodigo", query = "SELECT b FROM Barrio b WHERE b.codigo = :codigo")})
+public class Barrio implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_estado_reserva")
+    @Column(name = "id_barrio")
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 200)
     @Column(name = "nombre")
     private String nombre;
-    @Lob
-    @Size(max = 65535)
-    @Column(name = "descripcion")
-    private String descripcion;
+    @Size(max = 15)
+    @Column(name = "codigo")
+    private String codigo;
+    @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Ciudad ciudad;
 
-    public EstadoReserva() {
+    public Barrio() {
     }
 
-    public EstadoReserva(Integer idEstadoReserva) {
-        this.id = idEstadoReserva;
+    public Barrio(Integer idBarrio) {
+        this.id = idBarrio;
     }
 
-    public EstadoReserva(Integer idEstadoReserva, String nombre) {
-        this.id = idEstadoReserva;
+    public Barrio(Integer idBarrio, String nombre) {
+        this.id = idBarrio;
         this.nombre = nombre;
     }
 
@@ -77,12 +82,20 @@ public class EstadoReserva implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
     }
 
     @Override
@@ -95,10 +108,10 @@ public class EstadoReserva implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof EstadoReserva)) {
+        if (!(object instanceof Barrio)) {
             return false;
         }
-        EstadoReserva other = (EstadoReserva) object;
+        Barrio other = (Barrio) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -107,7 +120,7 @@ public class EstadoReserva implements Serializable {
 
     @Override
     public String toString() {
-        return "co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.EstadoReserva[ idEstadoReserva=" + id + " ]";
+        return "co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Barrio[ idBarrio=" + id + " ]";
     }
     
 }

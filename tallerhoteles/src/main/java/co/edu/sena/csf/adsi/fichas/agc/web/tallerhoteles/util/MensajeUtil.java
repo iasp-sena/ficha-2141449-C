@@ -5,6 +5,7 @@
  */
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.util;
 
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.exception.AppException;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -30,6 +31,10 @@ public final class MensajeUtil {
     
     public static void mostrarAlerta(String idElemento, String mensaje, String detalle){
         mostrarMensaje(idElemento, mensaje, detalle, FacesMessage.SEVERITY_WARN);
+    }
+    
+    public static void mostrarAlerta(String idElemento, AppException exception){
+        mostrarMensaje(idElemento, exception.getMessage(), exception.getType().getDetails(), FacesMessage.SEVERITY_WARN);
     }
     
     public static void mostrarInformativo(String mensaje, String detalle){

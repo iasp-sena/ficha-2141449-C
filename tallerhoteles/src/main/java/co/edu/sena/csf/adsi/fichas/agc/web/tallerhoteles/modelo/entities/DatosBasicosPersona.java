@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo;
+package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -24,11 +24,15 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 
 /**
  *
  * @author Ismael
  */
+@Builder
+@AllArgsConstructor
 @Entity
 @Table(name = "datos_basicos_personas")
 @XmlRootElement
@@ -61,6 +65,12 @@ public class DatosBasicosPersona implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "apellidos")
     private String apellidos;
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Size(min = 1, max = 65535)
+    @Column(name = "email")
+    private String email;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "datosBasicos", fetch = FetchType.LAZY)
     private Huesped huesped;
     @JoinColumn(name = "id_tipo_documento", referencedColumnName = "id_tipo_documento")
@@ -117,6 +127,14 @@ public class DatosBasicosPersona implements Serializable {
     
     public String getNombreCompleto(){
         return String.format("%s %s", this.nombres, this.apellidos);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Huesped getHuesped() {

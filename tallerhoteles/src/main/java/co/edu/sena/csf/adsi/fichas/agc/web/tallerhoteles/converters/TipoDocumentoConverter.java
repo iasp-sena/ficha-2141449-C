@@ -6,7 +6,7 @@
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.converters;
 
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao.TipoDocumentoDAO;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.TipoDocumento;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.TipoDocumento;
 import java.util.Objects;
 import javax.enterprise.inject.spi.CDI;
 import javax.faces.component.UIComponent;

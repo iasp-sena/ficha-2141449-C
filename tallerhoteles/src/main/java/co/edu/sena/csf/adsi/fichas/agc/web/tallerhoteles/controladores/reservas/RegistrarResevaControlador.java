@@ -8,10 +8,10 @@ package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.controladores.reservas
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.controladores.commons.BuscarHabitacionControlador;
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.controladores.commons.BuscarHuespedControlador;
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao.ReservaDAO;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.EstadoReserva;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Habitacion;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Huesped;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Reserva;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.EstadoReserva;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Habitacion;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Huesped;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Reserva;
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.util.MailUtil;
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.util.MensajeUtil;
 import java.io.Serializable;
@@ -55,7 +55,7 @@ public class RegistrarResevaControlador implements Serializable {
             reserva.setEstadoReserva(new EstadoReserva(1));
             reservaDAO.registrar(reserva);
             MensajeUtil.mostrarInformativo("Reserva realizada", "Gracias por preferirnos");
-            MailUtil.sendHTML(huespedSelecciondado.getEmail(), "Nueva reserva App Hoteles", 
+            MailUtil.sendHTML(huespedSelecciondado.getDatosBasicos().getEmail(), "Nueva reserva App Hoteles", 
                     String.format(
                             "<h3>Reserva realizada</h3><p><span style='color:red;'>Hotel:</span> %s</p><p><span style='color:red;'>Habitación:</span> %s</p><p><span style='color:red;'>Fecha ingreso:</span> %s</p><p><span style='color:red;'>Fecha salida:</span> %s</p><p><span style='color:red;'>A nombre de:</span> %s</p><p>Lo esperamos!</p>",
                             habitacionSeleccionada.getHotel().getNombre() + " - " + habitacionSeleccionada.getHotel().getDireccion(),

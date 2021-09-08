@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    template="/WEB-INF/templates/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="title">Reservas del sistema</ui:define>
+    <ui:define name="title-page">Informe reservas</ui:define>
+    <ui:define name="contenido">
+        <div class="row">
+            <div class="col">
+                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            </div>
+        </div>
+    </ui:define>
+
+    <ui:define name="scripts_start">
+        <script>
+            window.onload = function () {
+
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    exportEnabled: true,
+                    theme: "light1", // "light1", "light2", "dark1", "dark2"
+                    title: {
+                        text: "Simple Column Chart with Index Labels"
+                    },
+                    axisY: {
+                        prefix: "$",
+                        title: "Ventas",
+                        includeZero: true
+                    },
+                    axisX: {
+                        title: "Sistemas operativos"
+                    },
+                    data: [{
+                            showInLegend: true,
+                            name: "Serie del 2000",
+                            legendText: "2000",
+                            type: "column", //change type to bar, line, area, pie, etc
+                            //indexLabel: "{y}", //Shows y value on all Data Points
+                            indexLabelFontColor: "#5A5757",
+                            indexLabelFontSize: 16,
+                            indexLabelPlacement: "outside",
+                            dataPoints: #{informeReservas.pointJson}
+                        }]
+                });
+                chart.render();
+
+            };
+        </script>
+    </ui:define>
+    <ui:define name="scripts_end">
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </ui:define>
+</ui:composition>
+

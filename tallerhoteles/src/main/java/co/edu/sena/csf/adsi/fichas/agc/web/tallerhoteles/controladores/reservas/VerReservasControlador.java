@@ -6,7 +6,7 @@
 package co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.controladores.reservas;
 
 import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.dao.ReservaDAO;
-import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.Reserva;
+import co.edu.sena.csf.adsi.fichas.agc.web.tallerhoteles.modelo.entities.Reserva;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
