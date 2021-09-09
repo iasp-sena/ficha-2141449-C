@@ -52,6 +52,35 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
 
+
+                        <!-- ============================================================== -->
+                        <!-- Locale -->
+                        <!-- ============================================================== -->
+                        <li>
+                            <div class="dropdown">
+
+                                <a class="profile-pic dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <h:graphicImage library="img" name="#{lenguajeControlador.idioma.language}.png" height="30px"/>
+                                    <span class="text-white font-medium">#{appMessages["text_locale_".concat(lenguajeControlador.idioma.language)]}</span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <ui:repeat value="#{lenguajeControlador.idiomas}" var="idioma">
+                                        <li>
+                                            <h:commandLink class="dropdown-item" value=""
+                                                           actionListener="#{lenguajeControlador.cambiarIdioma(idioma)}">
+                                                <h:graphicImage library="img" name="#{idioma}.png" height="30px"/>
+                                                <span>#{appMessages["text_locale_".concat(idioma)]}</span>
+                                            </h:commandLink>
+                                        </li>
+                                    </ui:repeat>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- Locale -->
+                        <!-- ============================================================== -->
+
+
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->

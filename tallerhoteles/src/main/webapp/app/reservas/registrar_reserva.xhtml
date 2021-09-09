@@ -8,24 +8,24 @@
     xmlns:attr="http://xmlns.jcp.org/jsf/passthrough"
     xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:define name="title">Reservas</ui:define>
-    <ui:define name="title-page">Registro de reserva</ui:define>
+    <ui:define name="title">#{i18nReservas.reservas_title_text}</ui:define>
+    <ui:define name="title-page">#{i18nReservas["reservas_title_page_text"]}</ui:define>
     <ui:define name="contenido">
         <h:form id="formRegistrarHabitacion">
             <div class="card">
                 <div class="card-header">
-                    Huesped
+                    
                 </div>
                 <div class="card-body">
                     <h:panelGroup layout="block" id="panelDatosHuesped" class="row g-3">
                         <div class="col-auto">
-                            <label for="tipoDocumento" class="visually-hidden">Tipo documento</label>
+                            <label for="tipoDocumento" class="visually-hidden">#{appMessages.text_tipo_documento}</label>
 
                             <div class="col-md-12 border-bottom p-0">
                                 <h:selectOneMenu id="tipoDocumento"
                                                  value="#{buscarHuespedControlador.tipoDocumentoSeleccionado}"
                                                  class="form-control p-0 border-0">
-                                    <f:selectItem itemLabel="Seleccione un tipo de documento"/>
+                                    <f:selectItem itemLabel="#{appMessages.placeholder_tipo_documento}"/>
                                     <f:selectItems value="#{buscarHuespedControlador.tiposDocumentos}"
                                                    var="tipoDocumento"
                                                    itemValue="#{tipoDocumento}"
@@ -34,10 +34,10 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <label for="numeroDocumento" class="visually-hidden">Número de documento</label>
+                            <label for="numeroDocumento" class="visually-hidden">#{appMessages.text_numero_documento}</label>
                             <h:inputText id="numeroDocumento"
                                          value="#{buscarHuespedControlador.numeroDocumento}"
-                                         attr:placeholder="Ingrese el número de documento"
+                                         attr:placeholder="#{appMessages.placeholder_numero_documento}"
                                          class="form-control p-0 border-0"/>
                         </div>
                         <div class="col-auto">
@@ -169,22 +169,22 @@
             </div>
 
             <div class="form-group mb-4">
-                <label class="col-md-12 p-0">Fecha ingreso</label>
+                <label class="col-md-12 p-0">#{i18nReservas.form_registro_fecha_ingreso_label}</label>
                 <div class="col-md-12 border-bottom p-0">
                     <h:inputText id="fechaIngreso"
                                  value="#{registrarResevaControlador.fechaIngreso}"
-                                 attr:placeholder="Ingrese el nombre del hotel"
+                                 attr:placeholder="#{i18nReservas.form_registro_fecha_ingreso_placeholder}"
                                  class="form-control p-0 border-0">
                         <f:convertDateTime parent="dd/mm/yyyy"/>
                     </h:inputText>
                 </div>
             </div>
             <div class="form-group mb-4">
-                <label class="col-md-12 p-0">Fecha salida</label>
+                <label class="col-md-12 p-0">#{i18nReservas.form_registro_fecha_salida_label}</label>
                 <div class="col-md-12 border-bottom p-0">
                     <h:inputText id="fechaSalida"
                                  value="#{registrarResevaControlador.fechaSalida}"
-                                 attr:placeholder="Ingrese la dirección del hotel"
+                                 attr:placeholder="#{i18nReservas.form_registro_fecha_salida_placeholder}"
                                  class="form-control p-0 border-0"
                                  converter="dateFormatConverter">
                     </h:inputText>
